@@ -1,2 +1,1 @@
-# School-Manager-Game
-# This is a fun edit :D
+# Detta är dåligt spel

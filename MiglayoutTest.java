@@ -45,7 +45,7 @@ public class MiglayoutTest {
 		panel1.add(panel5, "growy, pushy, w 100:200:500, gap 0 0, wrap");
 		panel1.add(panel3, "growx, pushx, gap 0 0, h 100:200:500");
 		
-		panel3.add(button1, "h 75, w 150");
+		panel3.add(button1, "h 75, w 500");
 		
 		
 		

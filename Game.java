@@ -3,12 +3,13 @@ package real;
 import java.awt.Canvas;
 import java.awt.Color;
 import java.awt.Dimension;
+
 import java.awt.Font;
+
 import java.awt.Graphics;
 import java.awt.Toolkit;
 import java.awt.image.BufferStrategy;
 import java.util.Random;
-
 import javax.swing.JFrame;
 
 public class Game extends Canvas implements Runnable{
@@ -25,15 +26,17 @@ public class Game extends Canvas implements Runnable{
 	
 	private Random r;
 	private Handler handler;
-	
-	
-	private int money = 100;
-	private String moneyString = Integer.toString(money);
+	private HUD hud;
 	
 	public Game() {
+
+		handler = new Handler();
+
 		new Window(WIDTH, HEIGHT, "Let's build a game", this);
 		
-		handler = new Handler();
+		hud = new HUD();
+		
+
 		r = new Random();
 		
 		for(int i = 0; i < 50; i++) {
@@ -55,6 +58,7 @@ public class Game extends Canvas implements Runnable{
 		}
 	}
 	public void run() {
+		this.requestFocus();
 		long lastTime = System.nanoTime();
 		double amountOfTicks = 60.0;
 		double ns = 1000000000 / amountOfTicks;
@@ -84,6 +88,8 @@ public class Game extends Canvas implements Runnable{
 	
 	private void tick() {
 		handler.tick();
+		hud.tick();
+
 	}
 	private void render() {
 		BufferStrategy bs = this.getBufferStrategy();
@@ -91,29 +97,33 @@ public class Game extends Canvas implements Runnable{
 			this.createBufferStrategy(3);
 			return;
 		}
+				
 		Graphics g = bs.getDrawGraphics();
-		Graphics bar = bs.getDrawGraphics();
-		Graphics barDown = bs.getDrawGraphics();
-	
+		
 		g.setColor(Color.WHITE);
 		g.fillRect(0, 0, WIDTH, HEIGHT);
 		
-		bar.setColor(Color.RED);
-		bar.fillRect(0, 0, WIDTH, HEIGHT/16);
-		
-		barDown.setColor(Color.YELLOW);
-		barDown.fillRect(0, HEIGHT-(HEIGHT/10), WIDTH, HEIGHT);
-		
 		handler.render(g);
-		handler.render(bar);
-		handler.render(barDown);
+
+		hud.render(g);
 		
 		g.dispose();
-		bar.dispose();
-		barDown.dispose();
 		
 		bs.show();
 	}
+	
+	public static int clamp(int var, int min, int max) {
+		if(var>=max) {
+			return var = max;
+		}
+		else if (var<=min) {
+			return var = min;
+		}
+		else
+			return var;
+	}
+  }
+  
 	public static void main(String[] args) {
 		new Game();
 	}

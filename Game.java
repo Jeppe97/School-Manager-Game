@@ -1,14 +1,16 @@
-package ver1;
+package real;
 
 import java.awt.Canvas;
 import java.awt.Color;
 import java.awt.Dimension;
+
+import java.awt.Font;
+
 import java.awt.Graphics;
 import java.awt.Toolkit;
 import java.awt.image.BufferStrategy;
 import java.util.Random;
-
-import javax.swing.JPanel;
+import javax.swing.JFrame;
 
 public class Game extends Canvas implements Runnable{
 	
@@ -34,6 +36,7 @@ public class Game extends Canvas implements Runnable{
 		
 		hud = new HUD();
 		
+
 		r = new Random();
 		
 		for(int i = 0; i < 50; i++) {
@@ -86,6 +89,7 @@ public class Game extends Canvas implements Runnable{
 	private void tick() {
 		handler.tick();
 		hud.tick();
+
 	}
 	private void render() {
 		BufferStrategy bs = this.getBufferStrategy();
@@ -118,9 +122,8 @@ public class Game extends Canvas implements Runnable{
 		else
 			return var;
 	}
-	
-	
-	
+  }
+  
 	public static void main(String[] args) {
 		new Game();
 	}

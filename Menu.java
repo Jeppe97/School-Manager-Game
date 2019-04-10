@@ -5,11 +5,36 @@ import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.util.Random;
+
+import real.Game.STATE;
 
 public class Menu extends MouseAdapter{
 	
+	private Game game;
+	private Handler handler;
+	private Random r = new Random();
+	
+	public Menu(Game game, Handler handler) {
+		this.game = game;
+		this.handler = handler;
+	}
+	
 	public void mousePressed(MouseEvent e) {
+		int my = e.getY();
+		int mx = e.getX();
 		
+		//Play Button
+		if(mouseOver(mx, my, Game.WIDTH/2, 100, 200, 64)) {
+			handler.addObject(new Player(r.nextInt(Game.WIDTH),r.nextInt(Game.HEIGHT),ID.Player));
+			handler.addObject(new Money(200,200,ID.Money));
+			game.gameState = STATE.Game;
+		}
+		
+		//Quit Button
+		if(mouseOver(mx,my,Game.WIDTH/2,300,200,64)) {
+			System.exit(1);
+		}
 	}
 	
 	public void mouseReleased(MouseEvent e) {
@@ -19,6 +44,14 @@ public class Menu extends MouseAdapter{
 	public void tick() {
 		
 	}
+	private boolean mouseOver(int mx, int my, int x, int y, int width, int height) {
+		
+		if(mx > x && mx < x + width) {
+			if(my > y && my < y + height) {
+				return true;
+			}else return false;
+		}else return false;
+	}
 	
 	public void render(Graphics g) {
 		Font fnt = new Font("arial",1,50);
@@ -26,17 +59,17 @@ public class Menu extends MouseAdapter{
 		
 		g.setFont(fnt);
 		g.setColor(Color.WHITE);
-		g.drawString("Menu", 240, 70);
+		g.drawString("Menu", Game.WIDTH/2, 70);
 		
 		g.setFont(fnt2);
-		g.drawRect(200, 100, 200, 64);
-		g.drawString("Play", 270, 140);
+		g.drawRect(Game.WIDTH/2, 100, 200, 64);
+		g.drawString("Play", Game.WIDTH/2, 140);
 		
-		g.drawRect(200, 200, 200, 64);
-		g.drawString("Help", 270, 240);
+		g.drawRect(Game.WIDTH/2, 200, 200, 64);
+		g.drawString("Help", Game.WIDTH/2, 240);
 		
-		g.drawRect(200, 300, 200, 64);
-		g.drawString("Quit", 270, 340);
+		g.drawRect(Game.WIDTH/2, 300, 200, 64);
+		g.drawString("Quit", Game.WIDTH/2, 340);
 	}
 
 }

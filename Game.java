@@ -38,17 +38,14 @@ public class Game extends Canvas implements Runnable{
 	
 	public Game() {
 		handler = new Handler();
+		menu = new Menu(this, handler);
+		this.addMouseListener(menu);
 		
 		new Window(WIDTH, HEIGHT, "School Manager Game", this);
 		
 		hud = new HUD();
-		menu = new Menu();
 		r = new Random();
 		
-		for(int i = 0; i < 50; i++) {
-			handler.addObject(new Player(r.nextInt(WIDTH),r.nextInt(HEIGHT),ID.Player));
-		}
-		handler.addObject(new Money(200,200,ID.Money));
 	}
 	public synchronized void start() {
 		thread = new Thread(this);

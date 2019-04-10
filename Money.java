@@ -29,7 +29,7 @@ public class Money extends GameObject{
 	public void render(Graphics g) {
 		g.setColor(Color.WHITE);
 		g.setFont(new Font("Arial",Font.BOLD,20));
-		g.drawString("Money : "+moneyTest2, 20, 20);
+		g.drawString("Money : "+moneyTest2, 15, 70);
 		
 		
 	}

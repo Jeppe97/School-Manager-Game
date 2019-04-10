@@ -3,16 +3,26 @@ package real;
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.Graphics;
+import java.awt.Image;
+import java.awt.Toolkit;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.awt.image.BufferedImage;
+import java.awt.image.ImageObserver;
+import java.io.File;
+import java.io.IOException;
 import java.util.Random;
+
+import javax.imageio.ImageIO;
+import javax.swing.ImageIcon;
+import javax.swing.JLabel;
 
 public class Menu extends MouseAdapter{
 
 	private Game game;
 	private Handler handler;
 	private Random r = new Random();
-	
+
 	public Menu (Game game, Handler handler) {
 		this.game = game;
 		this.handler = handler;
@@ -30,8 +40,12 @@ public class Menu extends MouseAdapter{
 
 	}
 
-	public void render(Graphics g) {
-		
+	public void render(Graphics g) throws IOException {
+
+		BufferedImage img = null;
+		img = ImageIO.read(new File("C:\\Users\\Ebba\\Pictures\\Saved Pictures\\ImageEncoded.png"));
+		g.drawImage(img, 150, 100, null);
+
 		Font header = new Font("Courier",1,50);
 		Font buttonText = new Font("Courier",1,30);
 

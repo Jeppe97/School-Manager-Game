@@ -24,22 +24,25 @@ public class HUD extends MouseAdapter{
 		int mx = e.getX();
 		
 		//Multisalen Button
-		if(mouseOver(mx, my, 200, Game.HEIGHT-200, 200, 100)) {
+		if(mouseOver(mx, my, 250, Game.HEIGHT-150, 200, 50)) {
+
 			game.gameState = STATE.Multisalen;
 		}
 		
 		//Library Button
-		if(mouseOver(mx,my,500,Game.HEIGHT-200,200,100)) {
-			game.gameState = STATE.Canteen;
+		if(mouseOver(mx,my,450, Game.HEIGHT-150, 200, 50)) {
+			game.gameState = STATE.LÃ¤nken;
 		}
 		//Canteen Button  
-			if(mouseOver(mx,my,800,Game.HEIGHT-200,200,100)) {
-				game.gameState = STATE.Library;
+			if(mouseOver(mx,my,650, Game.HEIGHT-150, 200, 50)) {
+
+				game.gameState = STATE.Biblan;
 			}
 		
 		//Parking lot Button
-		if(mouseOver(mx,my,1100,Game.HEIGHT-200,200,100)) {
-			game.gameState = STATE.ParkingLot;
+		if(mouseOver(mx,my,850, Game.HEIGHT-150, 200, 50)) {
+
+			game.gameState = STATE.Parkering;
 		}
 	}
 	
@@ -62,47 +65,50 @@ public class HUD extends MouseAdapter{
 		}else return false;
 	}
 	public void render(Graphics g) {
-		Font mood = new Font("Arial",Font.BOLD,20);
-		g.setFont(mood);
 		
-		g.drawString("Mood: ", 15, 40);
 		g.setColor(Color.gray);
-		g.fillRect(75, 17, 200, 32);
+		g.fillRect(15, 15, 200, 32);
 		g.setColor(new Color(100, greenValue, 0));
-		g.fillRect(75, 17, Mood*2, 32);
+		g.fillRect(15, 15, Mood*2, 32);
 		g.setColor(Color.white);
-		g.drawRect(75, 17, 200, 32);
+		g.drawRect(15, 15, 200, 32);
 		
-		Font fnt = new Font("Arial",1,30);
+		Font fnt = new Font("Courier",1,20);
 		g.setFont(fnt);
+		
 		//Multisalen
-		g.drawRect(200, Game.HEIGHT-200, 200, 100);
-		g.drawString("MULTISALEN", 200, Game.HEIGHT-160);
-		//L�nken
-		g.drawRect(500, Game.HEIGHT-200, 200, 100);
-		g.drawString("CANTEEN", 500, Game.HEIGHT-160);
+		g.drawRect(250, Game.HEIGHT-150, 200, 50);
+		g.drawString("MULTISALEN", 290, Game.HEIGHT-120);
+		
+		//LÃ¤nken
+		g.drawRect(450, Game.HEIGHT-150, 200, 50);
+		g.drawString("CANTEEN", 500, Game.HEIGHT-120);
+		
 		//Biblan
-		g.drawRect(800, Game.HEIGHT-200, 200, 100);
-		g.drawString("LIBRARY", 800, Game.HEIGHT-160);
+		g.drawRect(650, Game.HEIGHT-150, 200, 50);
+		g.drawString("LIBRARY", 700, Game.HEIGHT-120);
+		
 		//Parkering
-		g.drawRect(1100, Game.HEIGHT-200, 200, 100);
-		g.drawString("PARKING LOT", 1100, Game.HEIGHT-160);
+		g.drawRect(850, Game.HEIGHT-150, 200, 50);
+		g.drawString("PARKING LOT", 890, Game.HEIGHT-120);
+		
+
 		if(game.gameState == STATE.Multisalen) {
 			Font fnt3 = new Font("Verdana",1,100);
 			g.setFont(fnt3);
 			g.drawString("Welcome to Multisalen!", 400, Game.HEIGHT/2);
 		}
-		if(game.gameState == STATE.Canteen) {
+		if(game.gameState == STATE.LÃ¤nken) {
 			Font fnt3 = new Font("Verdana",1,100);
 			g.setFont(fnt3);
 			g.drawString("Welcome to the Canteen!", 400, Game.HEIGHT/2);
 		}
-		if(game.gameState == STATE.Library) {
+		if(game.gameState == STATE.Biblan) {
 			Font fnt3 = new Font("Verdana",1,100);
 			g.setFont(fnt3);
 			g.drawString("Welcome to the Library!", 400, Game.HEIGHT/2);
 		}
-		if(game.gameState == STATE.ParkingLot) {
+		if(game.gameState == STATE.Parkering) {
 			Font fnt3 = new Font("Verdana",1,100);
 			g.setFont(fnt3);
 			g.drawString("Welcome to the Parking lot!", 400, Game.HEIGHT/2);
@@ -112,5 +118,5 @@ public class HUD extends MouseAdapter{
 	
 	
 	
-	
+
 }

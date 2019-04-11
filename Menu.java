@@ -37,7 +37,7 @@ public class Menu extends MouseAdapter{
 		int mx = e.getX();
 		
 		//Play Button
-		if(mouseOver(mx, my, Game.WIDTH/2, 100, 200, 64)) {
+		if(mouseOver(mx, my, (Game.WIDTH/2 - 170), (Game.HEIGHT/2 - 140), 200, 64)) {
 			handler.addObject(new Money(200,200,ID.Money));
       handler.addObject(new Students(200,200,ID.Students));
 
@@ -45,7 +45,7 @@ public class Menu extends MouseAdapter{
 		}
 		
 		//Help Button
-		if(mouseOver(mx,my,Game.WIDTH/2,200,200,64)) {
+		if(mouseOver(mx,my,(Game.WIDTH/2 - 170), (Game.HEIGHT/2 - 50), 200, 64)) {
 			game.gameState = STATE.Help;
 		}
 		//Back Button For Help
@@ -57,7 +57,7 @@ public class Menu extends MouseAdapter{
 		}
 		
 		//Quit Button
-		if(mouseOver(mx,my,Game.WIDTH/2,300,200,64)) {
+		if(mouseOver(mx,my,(Game.WIDTH/2 - 170), (Game.HEIGHT/2 + 30), 200, 64)) {
 			System.exit(1);
 		}
 	}

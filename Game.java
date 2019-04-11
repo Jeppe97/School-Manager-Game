@@ -1,6 +1,7 @@
 package real;
 
 import java.awt.Canvas;
+
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Font;
@@ -25,21 +26,32 @@ public class Game extends Canvas implements Runnable{
 	
 	private Random r;
 	private Handler handler;
+	private Menu menu;
+	private HUD hud;
 	
+	public enum STATE {
+		Menu,
+		Game,
+		Help,
+		Multisalen,
+		Länken,
+		Biblan,
+		Parkering
+	};
 	
-	private int money = 100;
-	private String moneyString = Integer.toString(money);
+	public STATE gameState = STATE.Menu;
 	
 	public Game() {
-		new Window(WIDTH, HEIGHT, "Let's build a game", this);
-		
 		handler = new Handler();
+		menu = new Menu(this, handler);
+		this.addMouseListener(menu);
+		hud = new HUD(this,handler);
+		this.addMouseListener(hud);
+		
+		new Window(WIDTH, HEIGHT, "School Manager Game", this);
+		
 		r = new Random();
 		
-		for(int i = 0; i < 50; i++) {
-			handler.addObject(new Player(r.nextInt(WIDTH),r.nextInt(HEIGHT),ID.Player));
-		}
-		handler.addObject(new Money(200,200,ID.Money));
 	}
 	public synchronized void start() {
 		thread = new Thread(this);
@@ -55,6 +67,7 @@ public class Game extends Canvas implements Runnable{
 		}
 	}
 	public void run() {
+		this.requestFocus();
 		long lastTime = System.nanoTime();
 		double amountOfTicks = 60.0;
 		double ns = 1000000000 / amountOfTicks;
@@ -81,9 +94,15 @@ public class Game extends Canvas implements Runnable{
 		}
 		stop();
 	}
-	
 	private void tick() {
-		handler.tick();
+			handler.tick();
+			if(gameState!=STATE.Menu)
+			{
+				hud.tick();
+				//spawner.tick();
+			}else if(gameState == STATE.Menu) {
+				menu.tick();
+			}	
 	}
 	private void render() {
 		BufferStrategy bs = this.getBufferStrategy();
@@ -92,27 +111,29 @@ public class Game extends Canvas implements Runnable{
 			return;
 		}
 		Graphics g = bs.getDrawGraphics();
-		Graphics bar = bs.getDrawGraphics();
-		Graphics barDown = bs.getDrawGraphics();
-	
-		g.setColor(Color.WHITE);
+		
+		g.setColor(Color.BLACK);
 		g.fillRect(0, 0, WIDTH, HEIGHT);
 		
-		bar.setColor(Color.RED);
-		bar.fillRect(0, 0, WIDTH, HEIGHT/16);
-		
-		barDown.setColor(Color.YELLOW);
-		barDown.fillRect(0, HEIGHT-(HEIGHT/10), WIDTH, HEIGHT);
-		
 		handler.render(g);
-		handler.render(bar);
-		handler.render(barDown);
 		
+		if(gameState!=STATE.Menu) {
+			hud.render(g);
+		}else if(gameState == STATE.Menu || gameState == STATE.Help) {
+			menu.render(g);
+		}
 		g.dispose();
-		bar.dispose();
-		barDown.dispose();
-		
 		bs.show();
+	}
+	public static int clamp(int var, int min, int max) {
+		if(var>=max) {
+			return var = max;
+		}
+		else if (var<=min) {
+			return var = min;
+		}
+		else
+			return var;
 	}
 	public static void main(String[] args) {
 		new Game();

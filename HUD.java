@@ -1,5 +1,4 @@
 package real;
-
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.Graphics;
@@ -32,7 +31,7 @@ public class HUD extends MouseAdapter{
 		
 		//Library Button
 		if(mouseOver(mx,my,450, Game.HEIGHT-150, 200, 50)) {
-			game.gameState = STATE.Länken;
+			game.gameState = STATE.LÃ¤nken;
 		}
 		//Canteen Button  
 			if(mouseOver(mx,my,650, Game.HEIGHT-150, 200, 50)) {
@@ -52,7 +51,6 @@ public class HUD extends MouseAdapter{
 	}
 	
 	public void tick() {
-		Mood--;
 		Mood = Game.clamp(Mood, 0, 100);
 		greenValue = Game.clamp(greenValue, 0, 255);
 		
@@ -82,7 +80,7 @@ public class HUD extends MouseAdapter{
 		g.drawRect(250, Game.HEIGHT-150, 200, 50);
 		g.drawString("MULTISALEN", 290, Game.HEIGHT-120);
 		
-		//Länken
+		//LÃ¤nken
 		g.drawRect(450, Game.HEIGHT-150, 200, 50);
 		g.drawString("CANTEEN", 500, Game.HEIGHT-120);
 		
@@ -100,7 +98,7 @@ public class HUD extends MouseAdapter{
 			g.setFont(fnt3);
 			g.drawString("Welcome to Multisalen!", 400, Game.HEIGHT/2);
 		}
-		if(game.gameState == STATE.Länken) {
+		if(game.gameState == STATE.LÃ¤nken) {
 			Font fnt3 = new Font("Verdana",1,100);
 			g.setFont(fnt3);
 			g.drawString("Welcome to the Canteen!", 400, Game.HEIGHT/2);
@@ -120,5 +118,5 @@ public class HUD extends MouseAdapter{
 	
 	
 	
-	
+
 }

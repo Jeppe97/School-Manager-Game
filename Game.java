@@ -1,5 +1,4 @@
 package real;
-
 import java.awt.Canvas;
 
 import java.awt.Color;
@@ -34,9 +33,9 @@ public class Game extends Canvas implements Runnable{
 		Game,
 		Help,
 		Multisalen,
-		Länken,
-		Biblan,
-		Parkering
+		Canteen,
+		Library,
+		ParkingLot
 	};
 	
 	public STATE gameState = STATE.Menu;
@@ -96,11 +95,11 @@ public class Game extends Canvas implements Runnable{
 	}
 	private void tick() {
 			handler.tick();
-			if(gameState!=STATE.Menu)
+			if(gameState == STATE.Game || gameState == STATE.Canteen || gameState == STATE.Library || gameState == STATE.ParkingLot || gameState == STATE.Multisalen)
 			{
 				hud.tick();
 				//spawner.tick();
-			}else if(gameState == STATE.Menu) {
+			}else if(gameState == STATE.Menu || gameState == STATE.Help) {
 				menu.tick();
 			}	
 	}
@@ -117,7 +116,7 @@ public class Game extends Canvas implements Runnable{
 		
 		handler.render(g);
 		
-		if(gameState!=STATE.Menu) {
+		if(gameState == STATE.Game || gameState == STATE.Canteen || gameState == STATE.Library || gameState == STATE.ParkingLot || gameState == STATE.Multisalen) {
 			hud.render(g);
 		}else if(gameState == STATE.Menu || gameState == STATE.Help) {
 			menu.render(g);

@@ -1,5 +1,4 @@
 package real;
-
 import java.awt.Canvas;
 import java.awt.Dimension;
 

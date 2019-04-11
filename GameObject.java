@@ -1,5 +1,4 @@
 package real;
-
 import java.awt.Graphics;
 
 public abstract class GameObject {
@@ -9,6 +8,8 @@ public abstract class GameObject {
 	protected int velX, velY;
 	protected int moneyTest;
 	protected String moneyTest2;
+	protected int studentTest;
+	protected String studentTest2;
 
 
 public GameObject(int x, int y,ID id) {

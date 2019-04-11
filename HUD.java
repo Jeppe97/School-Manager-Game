@@ -1,5 +1,4 @@
 package real;
-
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.Graphics;
@@ -31,16 +30,16 @@ public class HUD extends MouseAdapter{
 		
 		//Library Button
 		if(mouseOver(mx,my,500,Game.HEIGHT-200,200,100)) {
-			game.gameState = STATE.Länken;
+			game.gameState = STATE.Canteen;
 		}
 		//Canteen Button  
 			if(mouseOver(mx,my,800,Game.HEIGHT-200,200,100)) {
-				game.gameState = STATE.Biblan;
+				game.gameState = STATE.Library;
 			}
 		
 		//Parking lot Button
 		if(mouseOver(mx,my,1100,Game.HEIGHT-200,200,100)) {
-			game.gameState = STATE.Parkering;
+			game.gameState = STATE.ParkingLot;
 		}
 	}
 	
@@ -49,7 +48,6 @@ public class HUD extends MouseAdapter{
 	}
 	
 	public void tick() {
-		Mood--;
 		Mood = Game.clamp(Mood, 0, 100);
 		greenValue = Game.clamp(greenValue, 0, 255);
 		
@@ -64,13 +62,16 @@ public class HUD extends MouseAdapter{
 		}else return false;
 	}
 	public void render(Graphics g) {
+		Font mood = new Font("Arial",Font.BOLD,20);
+		g.setFont(mood);
 		
+		g.drawString("Mood: ", 15, 40);
 		g.setColor(Color.gray);
-		g.fillRect(15, 15, 200, 32);
+		g.fillRect(75, 17, 200, 32);
 		g.setColor(new Color(100, greenValue, 0));
-		g.fillRect(15, 15, Mood*2, 32);
+		g.fillRect(75, 17, Mood*2, 32);
 		g.setColor(Color.white);
-		g.drawRect(15, 15, 200, 32);
+		g.drawRect(75, 17, 200, 32);
 		
 		Font fnt = new Font("Arial",1,30);
 		g.setFont(fnt);
@@ -91,17 +92,17 @@ public class HUD extends MouseAdapter{
 			g.setFont(fnt3);
 			g.drawString("Welcome to Multisalen!", 400, Game.HEIGHT/2);
 		}
-		if(game.gameState == STATE.Länken) {
+		if(game.gameState == STATE.Canteen) {
 			Font fnt3 = new Font("Verdana",1,100);
 			g.setFont(fnt3);
 			g.drawString("Welcome to the Canteen!", 400, Game.HEIGHT/2);
 		}
-		if(game.gameState == STATE.Biblan) {
+		if(game.gameState == STATE.Library) {
 			Font fnt3 = new Font("Verdana",1,100);
 			g.setFont(fnt3);
 			g.drawString("Welcome to the Library!", 400, Game.HEIGHT/2);
 		}
-		if(game.gameState == STATE.Parkering) {
+		if(game.gameState == STATE.ParkingLot) {
 			Font fnt3 = new Font("Verdana",1,100);
 			g.setFont(fnt3);
 			g.drawString("Welcome to the Parking lot!", 400, Game.HEIGHT/2);

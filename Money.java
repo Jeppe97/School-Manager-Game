@@ -1,5 +1,4 @@
 package real;
-
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.Graphics;
@@ -29,7 +28,7 @@ public class Money extends GameObject{
 	public void render(Graphics g) {
 		g.setColor(Color.WHITE);
 		g.setFont(new Font("Arial",Font.BOLD,20));
-		g.drawString("Money : "+moneyTest2, 15, 70);
+		g.drawString("$ : "+moneyTest2, 15, 70);
 		
 		
 	}

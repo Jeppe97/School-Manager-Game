@@ -96,7 +96,8 @@ public class Menu extends MouseAdapter{
 			g.setFont(header);
 			g.setColor(Color.WHITE);
 			String headline = "School Manager Game";
-			g.drawString(headline, Game.WIDTH/2 - 300, Game.HEIGHT/2 - 200);
+			int widthHeader = g.getFontMetrics().stringWidth(headline);
+			g.drawString(headline, Game.WIDTH/2 - (widthHeader/2), Game.HEIGHT/2 - 200);
 
 			g.setFont(buttonText);
 			String play = "Play";

@@ -5,11 +5,10 @@ public abstract class GameObject {
 	
 	protected int x,y;
 	protected ID id;
-	protected int velX, velY;
-	protected int moneyTest;
-	protected String moneyTest2;
-	protected int studentTest;
-	protected String studentTest2;
+	protected int money;
+	protected String moneyString;
+	protected int student;
+	protected String studentString;
 
 
 public GameObject(int x, int y,ID id) {
@@ -20,6 +19,12 @@ public GameObject(int x, int y,ID id) {
 	public abstract void tick();
 	public abstract void render(Graphics g);
 	
+	public int getStudent() {
+		return student;
+	}
+	public void setStudent(int student) {
+		this.student = student;
+	}
 	public void setX(int x) {
 		this.x = x;
 	}
@@ -38,23 +43,11 @@ public GameObject(int x, int y,ID id) {
 	public ID getId() {
 		return id;
 	}
-	public void setVelX(int velX) {
-		this.velX = velX;
-	}
-	public void setVelY(int velY) {
-		this.velY = velY;
-	}
-	public int getVelX() {
-		return velX;
-	}
-	public int getVelY() {
-		return velY;
-	}
-	public void setMoneyTest(int moneyTest) {
-		this.moneyTest = moneyTest;
+	public void setMoneyTest(int money) {
+		this.money = money;
 	}
 	public int getMoneyTest() {
-		return moneyTest;
+		return money;
 	}
 	
 

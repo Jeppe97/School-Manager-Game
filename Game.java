@@ -3,13 +3,13 @@ import java.awt.Canvas;
 
 import java.awt.Color;
 import java.awt.Dimension;
-import java.awt.Font;
+
 import java.awt.Graphics;
 import java.awt.Toolkit;
 import java.awt.image.BufferStrategy;
 import java.util.Random;
 
-import javax.swing.JFrame;
+
 
 public class Game extends Canvas implements Runnable{
 	

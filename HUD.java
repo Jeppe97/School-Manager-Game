@@ -80,7 +80,7 @@ public class HUD extends MouseAdapter{
 		g.drawRect(250, Game.HEIGHT-150, 200, 50);
 		g.drawString("MULTISALEN", 290, Game.HEIGHT-120);
 		
-		//LÃ¤nken
+		//Länken
 		g.drawRect(450, Game.HEIGHT-150, 200, 50);
 		g.drawString("CANTEEN", 500, Game.HEIGHT-120);
 		

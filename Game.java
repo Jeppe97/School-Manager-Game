@@ -1,15 +1,16 @@
 package real;
 
 import java.awt.Canvas;
+
 import java.awt.Color;
 import java.awt.Dimension;
-
 import java.awt.Font;
-
 import java.awt.Graphics;
 import java.awt.Toolkit;
 import java.awt.image.BufferStrategy;
+import java.io.IOException;
 import java.util.Random;
+
 import javax.swing.JFrame;
 
 public class Game extends Canvas implements Runnable{
@@ -26,23 +27,50 @@ public class Game extends Canvas implements Runnable{
 	
 	private Random r;
 	private Handler handler;
+	private Menu menu;
 	private HUD hud;
+	private MultiPOP pop1;
+	
+	public enum STATE {
+		Menu,
+		Game,
+		Help,
+		Multisalen,
+		MultisalenPOP,
+		Canteen,
+		Library,
+		ParkingLot
+	};
+	
+	public STATE gameState = STATE.Menu;
+	
+	
+	
+	int standardWidth = 800;
+	int standardHeight = 600;
+	int screenWidth, screenHeight; // Get these from your graphics device or the window you're drawing to.
+
+	 // Draws a 100x100 rectangle in the bottom right corner.
+
+	// Due to the scaling, if you are running on eg 1024x768, this becomes a 128x128 rectangle.
+	
+	
+	
+	
+	
+	
 	
 	public Game() {
-
 		handler = new Handler();
-
-		new Window(WIDTH, HEIGHT, "Let's build a game", this);
+		menu = new Menu(this, handler);
+		this.addMouseListener(menu);
+		hud = new HUD(this,handler);
+		this.addMouseListener(hud);
 		
-		hud = new HUD();
+		new Window(WIDTH, HEIGHT, "School Manager Game", this);
 		
-
 		r = new Random();
 		
-		for(int i = 0; i < 50; i++) {
-			handler.addObject(new Player(r.nextInt(WIDTH),r.nextInt(HEIGHT),ID.Player));
-		}
-		handler.addObject(new Money(200,200,ID.Money));
 	}
 	public synchronized void start() {
 		thread = new Thread(this);
@@ -73,8 +101,13 @@ public class Game extends Canvas implements Runnable{
 				tick();
 				delta--;
 			}
-			if(running) 
-				render();
+			if(running)
+				try {
+					render();
+				} catch (IOException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
 			frames++;
 			
 			if(System.currentTimeMillis() - timer > 1000) {
@@ -85,33 +118,40 @@ public class Game extends Canvas implements Runnable{
 		}
 		stop();
 	}
-	
 	private void tick() {
-		handler.tick();
-		hud.tick();
-
+			handler.tick();
+			if(gameState == STATE.Game || gameState == STATE.Canteen || gameState == STATE.Library || gameState == STATE.ParkingLot || gameState == STATE.Multisalen || gameState == STATE.MultisalenPOP){
+				hud.tick();
+				
+			}else if(gameState == STATE.Menu) {
+				menu.tick();
+			}	
 	}
-	private void render() {
+	private void render() throws IOException {
 		BufferStrategy bs = this.getBufferStrategy();
 		if(bs == null) {
 			this.createBufferStrategy(3);
 			return;
 		}
-				
 		Graphics g = bs.getDrawGraphics();
 		
-		g.setColor(Color.WHITE);
+		g.setColor(Color.BLACK);
 		g.fillRect(0, 0, WIDTH, HEIGHT);
 		
 		handler.render(g);
-
-		hud.render(g);
+		
+		if(gameState == STATE.Game || gameState == STATE.Canteen || gameState == STATE.Library || gameState == STATE.ParkingLot || gameState == STATE.Multisalen || gameState == STATE.MultisalenPOP){
+			hud.render(g);
+		
+			
+		}else if(gameState == STATE.Menu || gameState == STATE.Help) {
+			menu.render(g);
+		}
+		
 		
 		g.dispose();
-		
 		bs.show();
 	}
-	
 	public static int clamp(int var, int min, int max) {
 		if(var>=max) {
 			return var = max;
@@ -122,8 +162,6 @@ public class Game extends Canvas implements Runnable{
 		else
 			return var;
 	}
-  }
-  
 	public static void main(String[] args) {
 		new Game();
 	}

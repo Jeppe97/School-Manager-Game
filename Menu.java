@@ -2,11 +2,8 @@ package real;
 
 import java.awt.Color;
 import java.awt.Font;
-import java.awt.FontMetrics;
 import java.awt.Graphics;
-import java.awt.Graphics2D;
 import java.awt.Image;
-import java.awt.Rectangle;
 import java.awt.Toolkit;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
@@ -15,8 +12,6 @@ import java.awt.image.ImageObserver;
 import java.io.File;
 import java.io.IOException;
 import java.util.Random;
-import java.awt.Dimension;
-
 import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
@@ -52,6 +47,7 @@ public class Menu extends MouseAdapter{
 		if(mouseOver(mx,my,(Game.WIDTH/2 - 100), (Game.HEIGHT/2 - 50), 200, 64)) {
 			game.gameState = STATE.Help;
 		}
+		
 		//Back Button For Help
 		if(game.gameState == STATE.Help) {
 			if(mouseOver(mx,my,Game.WIDTH/2,(Game.HEIGHT/2)+200,200,64)) {
@@ -61,9 +57,10 @@ public class Menu extends MouseAdapter{
 		}
 
 		//Quit Button
-		if(mouseOver(mx,my,(Game.WIDTH/2 - 170), (Game.HEIGHT/2 + 30), 200, 64)) {
+		if(mouseOver(mx,my,(Game.WIDTH/2 - 100), (Game.HEIGHT/2 + 40), 200, 64)) {
 			System.exit(1);
 		}
+		
 	}
 
 	public void mouseReleased(MouseEvent e) {
@@ -83,12 +80,12 @@ public class Menu extends MouseAdapter{
 		}else return false;
 	}
 
-	public void render(Graphics g) {
+	public void render(Graphics g) throws IOException {
 		if(game.gameState == STATE.Menu) {
 
-			//			BufferedImage img = null;
-			//	img = ImageIO.read(new File("C:\\Users\\Ebba\\Pictures\\Saved Pictures\\ImageEncoded.png"));
-			//	g.drawImage(img, 150, 100, null);
+			BufferedImage img = null;
+			img = ImageIO.read(new File("C:\\Users\\Ebba\\Pictures\\Saved Pictures\\test2.jpg"));
+			g.drawImage(img, 0, 0, null);
 
 			Font header = new Font("Courier",1,50);
 			Font buttonText = new Font("Courier",1,30);
@@ -120,14 +117,18 @@ public class Menu extends MouseAdapter{
 
 		else if(game.gameState == STATE.Help) {
 
-			Font fnt = new Font("arial",1,50);
+			Font fnt = new Font("Monotype Corsiva",1,50);
 
 			g.setFont(fnt);
 			g.setColor(Color.WHITE);
-			g.drawString("Help", Game.WIDTH/2, Game.HEIGHT/2-100);
+			String help = "There is no help here, you have to trust your guts.";
+			int widthQuit = g.getFontMetrics().stringWidth(help);
+			g.drawString(help, Game.WIDTH/2 - (widthQuit/2), Game.HEIGHT/2-100);
 
-			g.drawRect(Game.WIDTH/2, (Game.HEIGHT/2)+200, 200, 64);
-			g.drawString("Back", Game.WIDTH/2, (Game.HEIGHT/2)+240);
+			String back = "Back to menu";
+			int widthBack = g.getFontMetrics().stringWidth(back);
+			g.drawRect((Game.WIDTH/2 - 150), (Game.HEIGHT/2 + 200), 300, 64);
+			g.drawString(back, Game.WIDTH/2 - (widthBack /2), (Game.HEIGHT/2)+250);
 		}
 
 	}

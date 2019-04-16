@@ -31,18 +31,18 @@ public class HUD extends MouseAdapter{
 		
 		//Library Button
 		if(mouseOver(mx,my,450, Game.HEIGHT-150, 200, 50)) {
-			game.gameState = STATE.LÃ¤nken;
+			game.gameState = STATE.Canteen;
 		}
 		//Canteen Button  
 			if(mouseOver(mx,my,650, Game.HEIGHT-150, 200, 50)) {
 
-				game.gameState = STATE.Biblan;
+				game.gameState = STATE.Library;
 			}
 		
 		//Parking lot Button
 		if(mouseOver(mx,my,850, Game.HEIGHT-150, 200, 50)) {
 
-			game.gameState = STATE.Parkering;
+			game.gameState = STATE.ParkingLot;
 		}
 	}
 	
@@ -80,7 +80,7 @@ public class HUD extends MouseAdapter{
 		g.drawRect(250, Game.HEIGHT-150, 200, 50);
 		g.drawString("MULTISALEN", 290, Game.HEIGHT-120);
 		
-		//LÃ¤nken
+		//Länken
 		g.drawRect(450, Game.HEIGHT-150, 200, 50);
 		g.drawString("CANTEEN", 500, Game.HEIGHT-120);
 		
@@ -98,17 +98,17 @@ public class HUD extends MouseAdapter{
 			g.setFont(fnt3);
 			g.drawString("Welcome to Multisalen!", 400, Game.HEIGHT/2);
 		}
-		if(game.gameState == STATE.LÃ¤nken) {
+		if(game.gameState == STATE.Canteen) {
 			Font fnt3 = new Font("Verdana",1,100);
 			g.setFont(fnt3);
 			g.drawString("Welcome to the Canteen!", 400, Game.HEIGHT/2);
 		}
-		if(game.gameState == STATE.Biblan) {
+		if(game.gameState == STATE.Library) {
 			Font fnt3 = new Font("Verdana",1,100);
 			g.setFont(fnt3);
 			g.drawString("Welcome to the Library!", 400, Game.HEIGHT/2);
 		}
-		if(game.gameState == STATE.Parkering) {
+		if(game.gameState == STATE.ParkingLot) {
 			Font fnt3 = new Font("Verdana",1,100);
 			g.setFont(fnt3);
 			g.drawString("Welcome to the Parking lot!", 400, Game.HEIGHT/2);

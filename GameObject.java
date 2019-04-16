@@ -5,12 +5,11 @@ public abstract class GameObject {
 
 	protected int x,y;
 	protected ID id;
-	protected int velX, velY;
-	protected int moneyTest;
-	protected String moneyTest2;
-	protected int studentTest;
-	protected String studentTest2;
-	protected int Mood;
+
+	protected int money;
+	protected String moneyString;
+	protected int student;
+	protected String studentString;
 
 
 	public GameObject(int x, int y,ID id) {
@@ -39,23 +38,11 @@ public abstract class GameObject {
 	public ID getId() {
 		return id;
 	}
-	public void setVelX(int velX) {
-		this.velX = velX;
-	}
-	public void setVelY(int velY) {
-		this.velY = velY;
-	}
-	public int getVelX() {
-		return velX;
-	}
-	public int getVelY() {
-		return velY;
-	}
-	public void setMoneyTest(int moneyTest) {
-		this.moneyTest = moneyTest;
+	public void setMoneyTest(int money) {
+		this.money = money;
 	}
 	public int getMoneyTest() {
-		return moneyTest;
+		return money;
 	}
 	
 	public int getMood(){

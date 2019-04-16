@@ -51,10 +51,7 @@ public class HUD extends MouseAdapter{
 	}
 	
 	public void tick() {
-		Mood = Game.clamp(Mood, 0, 100);
-		greenValue = Game.clamp(greenValue, 0, 255);
-		
-		greenValue = Mood*2;
+
 	}	
 	private boolean mouseOver(int mx, int my, int x, int y, int width, int height) {
 		
@@ -66,15 +63,11 @@ public class HUD extends MouseAdapter{
 	}
 	public void render(Graphics g) {
 		
-		g.setColor(Color.gray);
-		g.fillRect(15, 15, 200, 32);
-		g.setColor(new Color(100, greenValue, 0));
-		g.fillRect(15, 15, Mood*2, 32);
-		g.setColor(Color.white);
-		g.drawRect(15, 15, 200, 32);
 		
 		Font fnt = new Font("Courier",1,20);
 		g.setFont(fnt);
+		g.setColor(Color.WHITE);
+
 		
 		//Multisalen
 		g.drawRect(250, Game.HEIGHT-150, 200, 50);

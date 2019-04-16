@@ -9,6 +9,9 @@ public abstract class GameObject {
 	protected String moneyString;
 	protected int student;
 	protected String studentString;
+	protected int mood;
+	protected int greenValue;
+
 
 
 public GameObject(int x, int y,ID id) {
@@ -19,11 +22,17 @@ public GameObject(int x, int y,ID id) {
 	public abstract void tick();
 	public abstract void render(Graphics g);
 	
-	public int getStudent() {
-		return student;
+	public String getStudentString() {
+		return studentString;
 	}
-	public void setStudent(int student) {
-		this.student = student;
+	public void setStudentString(String studentString) {
+		this.studentString = studentString;
+	}
+	public int getMood() {
+		return mood;
+	}
+	public void setMood(int mood) {
+		this.mood += mood;
 	}
 	public void setX(int x) {
 		this.x = x;
@@ -38,16 +47,23 @@ public GameObject(int x, int y,ID id) {
 		return y;
 	}
 	public void setId(ID id) {
-		
+		this.id = id;
 	}
 	public ID getId() {
 		return id;
 	}
-	public void setMoneyTest(int money) {
-		this.money = money;
+	public void setMoney(int money) {
+		this.money += money;
 	}
-	public int getMoneyTest() {
+	public int getMoney() {
 		return money;
+	}
+	public int getStudent() {
+		return student;
+	}
+	public void setStudent(int student) {
+		this.student += student;
+
 	}
 	
 

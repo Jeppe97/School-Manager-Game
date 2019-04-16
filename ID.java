@@ -4,5 +4,8 @@ public enum ID {
 	Player(),
 	Enemy(),
 	Money(),
-	Students()
+	Students(),
+	Mood(),
+	test();
+
 }

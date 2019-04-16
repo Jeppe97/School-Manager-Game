@@ -38,8 +38,10 @@ public class Menu extends MouseAdapter{
 		
 		//Play Button
 		if(mouseOver(mx, my, (Game.WIDTH/2 - 170), (Game.HEIGHT/2 - 140), 200, 64)) {
+			handler.addObject(new Mood(200,200,ID.Mood));
+			handler.addObject(new Students(200,200,ID.Students));
 			handler.addObject(new Money(200,200,ID.Money));
-      handler.addObject(new Students(200,200,ID.Students));
+
 
 			game.gameState = STATE.Game;
 		}

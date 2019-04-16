@@ -9,8 +9,6 @@ import java.awt.Toolkit;
 import java.awt.image.BufferStrategy;
 import java.util.Random;
 
-
-
 public class Game extends Canvas implements Runnable{
 	
 	private static final long serialVersionUID = 7249936825495199895L;
@@ -98,7 +96,6 @@ public class Game extends Canvas implements Runnable{
 			if(gameState == STATE.Game || gameState == STATE.Canteen || gameState == STATE.Library || gameState == STATE.ParkingLot || gameState == STATE.Multisalen)
 			{
 				hud.tick();
-				//spawner.tick();
 			}else if(gameState == STATE.Menu || gameState == STATE.Help) {
 				menu.tick();
 			}	

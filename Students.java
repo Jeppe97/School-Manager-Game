@@ -11,14 +11,22 @@ public class Students extends GameObject{
 	public Students(int x, int y, ID id) {
 		super(x, y, id);
 		
-		student = 100;
+		student = 1000;
 	}
 	
 	public void tick() {
 		long elapsedTime = System.currentTimeMillis() - startTime;
-		if((elapsedTime/1000)>=1) {
+		if((elapsedTime/1000)>=2) {
 
-			student+=100;
+			if(mood>=75) {
+				student+=1000;
+			}
+			else if(mood<75 && mood>=50) {
+				student+=500;
+			}
+			else if(mood<50) {
+				student-=50;
+			}
 			startTime = System.currentTimeMillis();
 		}
 		studentString = Integer.toString(student);
@@ -41,9 +49,5 @@ public class Students extends GameObject{
 		g.setFont(new Font("Arial",Font.BOLD,20));
 		g.drawString("Students: " + student, 15, 100);	
 		}
-		
-		
 	}
-
-
 }

@@ -51,7 +51,7 @@ public class HUD extends MouseAdapter{
 	}
 	
 	public void tick() {
-
+		 
 	}	
 	private boolean mouseOver(int mx, int my, int x, int y, int width, int height) {
 		
@@ -67,7 +67,6 @@ public class HUD extends MouseAdapter{
 		Font fnt = new Font("Courier",1,20);
 		g.setFont(fnt);
 		g.setColor(Color.WHITE);
-
 		
 		//Multisalen
 		g.drawRect(250, Game.HEIGHT-150, 200, 50);

@@ -8,7 +8,7 @@ public class Mood extends GameObject{
 	public Mood(int x, int y, ID id) {
 		super(x, y, id);
 		
-		mood = 100;
+		mood = 75;
 		greenValue = 255;
 	}
 
@@ -19,7 +19,6 @@ public class Mood extends GameObject{
 		greenValue = mood*2;
 	
 	}
-
 	public void render(Graphics g) {
 		g.setColor(Color.gray);
 		g.fillRect(15, 15, 200, 32);

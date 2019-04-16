@@ -6,5 +6,6 @@ public enum ID {
 	Money(),
 	Students(),
 	Mood(),
-	test()
+	test();
+
 }

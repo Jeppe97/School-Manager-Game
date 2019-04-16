@@ -13,6 +13,7 @@ public abstract class GameObject {
 	protected int greenValue;
 
 
+
 public GameObject(int x, int y,ID id) {
 	this.x = x;
 	this.y = y;
@@ -62,6 +63,7 @@ public GameObject(int x, int y,ID id) {
 	}
 	public void setStudent(int student) {
 		this.student += student;
+
 	}
 	
 

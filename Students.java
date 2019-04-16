@@ -17,6 +17,7 @@ public class Students extends GameObject{
 	public void tick() {
 		long elapsedTime = System.currentTimeMillis() - startTime;
 		if((elapsedTime/1000)>=1) {
+
 			student+=100;
 			startTime = System.currentTimeMillis();
 		}
@@ -43,8 +44,6 @@ public class Students extends GameObject{
 		
 		
 	}
-	
-	
-	
+
 
 }

@@ -9,6 +9,7 @@ public class Money extends GameObject{
 	long startTime2 = System.currentTimeMillis();
 	int tempStudents;
 	int test;
+
 	
 	public Money(int x, int y, ID id) {
 		super(x, y, id);
@@ -28,6 +29,7 @@ public class Money extends GameObject{
 			buy(100);
 			startTime2 = System.currentTimeMillis();
 		}
+
 		moneyString = Integer.toString(money);
 	}
 
@@ -46,3 +48,4 @@ public class Money extends GameObject{
 		return message;
 	}
 }
+

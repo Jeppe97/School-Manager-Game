@@ -42,6 +42,7 @@ public class Menu extends MouseAdapter{
 			handler.addObject(new Students(200,200,ID.Students));
 			handler.addObject(new Money(200,200,ID.Money));
 
+
 			game.gameState = STATE.Game;
 		}
 		

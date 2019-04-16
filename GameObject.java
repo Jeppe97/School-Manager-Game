@@ -5,13 +5,12 @@ public abstract class GameObject {
 	
 	protected int x,y;
 	protected ID id;
-	protected int money;
+	protected static int money;
 	protected String moneyString;
-	protected int student;
+	protected static int student;
 	protected String studentString;
-	protected int mood;
+	protected static int mood;
 	protected int greenValue;
-
 
 
 public GameObject(int x, int y,ID id) {
@@ -29,7 +28,7 @@ public GameObject(int x, int y,ID id) {
 		this.studentString = studentString;
 	}
 	public int getMood() {
-		return mood;
+		return this.mood;
 	}
 	public void setMood(int mood) {
 		this.mood += mood;
@@ -56,14 +55,13 @@ public GameObject(int x, int y,ID id) {
 		this.money += money;
 	}
 	public int getMoney() {
-		return money;
+		return this.money;
 	}
 	public int getStudent() {
-		return student;
+		return this.student;
 	}
 	public void setStudent(int student) {
 		this.student += student;
-
 	}
 	
 

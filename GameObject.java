@@ -1,14 +1,16 @@
 package real;
-
 import java.awt.Graphics;
 
 public abstract class GameObject {
 	
 	protected int x,y;
 	protected ID id;
-	protected int velX, velY;
-	protected int moneyTest;
-	protected String moneyTest2;
+	protected int money;
+	protected String moneyString;
+	protected int student;
+	protected String studentString;
+	protected int mood;
+	protected int greenValue;
 
 
 public GameObject(int x, int y,ID id) {
@@ -19,6 +21,18 @@ public GameObject(int x, int y,ID id) {
 	public abstract void tick();
 	public abstract void render(Graphics g);
 	
+	public String getStudentString() {
+		return studentString;
+	}
+	public void setStudentString(String studentString) {
+		this.studentString = studentString;
+	}
+	public int getMood() {
+		return mood;
+	}
+	public void setMood(int mood) {
+		this.mood += mood;
+	}
 	public void setX(int x) {
 		this.x = x;
 	}
@@ -32,28 +46,22 @@ public GameObject(int x, int y,ID id) {
 		return y;
 	}
 	public void setId(ID id) {
-		
+		this.id = id;
 	}
 	public ID getId() {
 		return id;
 	}
-	public void setVelX(int velX) {
-		this.velX = velX;
+	public void setMoney(int money) {
+		this.money += money;
 	}
-	public void setVelY(int velY) {
-		this.velY = velY;
+	public int getMoney() {
+		return money;
 	}
-	public int getVelX() {
-		return velX;
+	public int getStudent() {
+		return student;
 	}
-	public int getVelY() {
-		return velY;
-	}
-	public void setMoneyTest(int moneyTest) {
-		this.moneyTest = moneyTest;
-	}
-	public int getMoneyTest() {
-		return moneyTest;
+	public void setStudent(int student) {
+		this.student += student;
 	}
 	
 

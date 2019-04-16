@@ -1,16 +1,15 @@
 package real;
-
 import java.awt.Canvas;
 
 import java.awt.Color;
 import java.awt.Dimension;
-import java.awt.Font;
+
 import java.awt.Graphics;
 import java.awt.Toolkit;
 import java.awt.image.BufferStrategy;
 import java.util.Random;
 
-import javax.swing.JFrame;
+
 
 public class Game extends Canvas implements Runnable{
 	
@@ -31,7 +30,12 @@ public class Game extends Canvas implements Runnable{
 	
 	public enum STATE {
 		Menu,
-		Game
+		Game,
+		Help,
+		Multisalen,
+		Canteen,
+		Library,
+		ParkingLot
 	};
 	
 	public STATE gameState = STATE.Menu;
@@ -40,10 +44,11 @@ public class Game extends Canvas implements Runnable{
 		handler = new Handler();
 		menu = new Menu(this, handler);
 		this.addMouseListener(menu);
+		hud = new HUD(this,handler);
+		this.addMouseListener(hud);
 		
 		new Window(WIDTH, HEIGHT, "School Manager Game", this);
 		
-		hud = new HUD();
 		r = new Random();
 		
 	}
@@ -90,11 +95,11 @@ public class Game extends Canvas implements Runnable{
 	}
 	private void tick() {
 			handler.tick();
-			if(gameState == STATE.Game)
+			if(gameState == STATE.Game || gameState == STATE.Canteen || gameState == STATE.Library || gameState == STATE.ParkingLot || gameState == STATE.Multisalen)
 			{
 				hud.tick();
 				//spawner.tick();
-			}else if(gameState == STATE.Menu) {
+			}else if(gameState == STATE.Menu || gameState == STATE.Help) {
 				menu.tick();
 			}	
 	}
@@ -111,9 +116,9 @@ public class Game extends Canvas implements Runnable{
 		
 		handler.render(g);
 		
-		if(gameState == STATE.Game) {
+		if(gameState == STATE.Game || gameState == STATE.Canteen || gameState == STATE.Library || gameState == STATE.ParkingLot || gameState == STATE.Multisalen) {
 			hud.render(g);
-		}else if(gameState == STATE.Menu) {
+		}else if(gameState == STATE.Menu || gameState == STATE.Help) {
 			menu.render(g);
 		}
 		g.dispose();

@@ -43,25 +43,25 @@ public class Students extends GameObject{
 	}
 	public void render(Graphics g) {
 		
-		String STUDENTS = "Students: ";
-		String ARIAL = "Arial";
+		String students = "Students: ";
+		String arial = "Arial";
 		
 		if (student<100) {
 		g.setColor(Color.RED);
-		g.setFont(new Font(ARIAL,Font.BOLD,20));
-		g.drawString(STUDENTS + student, posx, posy);
+		g.setFont(new Font(arial,Font.BOLD,20));
+		g.drawString(students + student, posx, posy);
 		}
 		if (student<500 && student>=100)
 		{
 		g.setColor(Color.YELLOW);
-		g.setFont(new Font(ARIAL,Font.BOLD,20));
-		g.drawString(STUDENTS + student, posx, posy);	
+		g.setFont(new Font(arial,Font.BOLD,20));
+		g.drawString(students + student, posx, posy);	
 		}
 		if (student>=500)
 		{
 		g.setColor(Color.green);
-		g.setFont(new Font(ARIAL,Font.BOLD,20));
-		g.drawString(STUDENTS + student, posx, posy);	
+		g.setFont(new Font(arial,Font.BOLD,20));
+		g.drawString(students + student, posx, posy);	
 		}
 		
 		

@@ -4,11 +4,7 @@ import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
-import java.awt.image.BufferedImage;
-import java.io.File;
 import java.io.IOException;
-
-import javax.imageio.ImageIO;
 
 import real.Game.STATE;
 
@@ -16,12 +12,9 @@ public class HUD extends MouseAdapter{
 
 	private Game game;
 	private Handler handler;
-	private Popups popups;
-	private Students g;
 	private Tables table;
 
-//	private static int Mood = 100;
-	private int greenValue = 255;
+
 	int txty = 90;
 	int boxwidth = 200;
 	int boxheight = 50;
@@ -43,32 +36,32 @@ public class HUD extends MouseAdapter{
 		this.game = game;
 		this.handler = handler;
 	}
-
+	@Override
 	public void mousePressed(MouseEvent e) {
 		int my = e.getY();
 		int mx = e.getX();
 		//Multisalen Button
 		if(mouseOver(mx, my, multipos, Game.HEIGHT-boxy, boxwidth, boxheight)) {
 
-			game.gameState = STATE.Multisalen;
+			game.gameState = STATE.MULTISALEN;
 		}
 
 		//Library Button
 		if(mouseOver(mx, my, canteenpos, Game.HEIGHT-boxy, boxwidth, boxheight)) {
-			game.gameState = STATE.Canteen;
+			game.gameState = STATE.CANTEEN;
 		}
 		//Canteen Button  
 		if(mouseOver(mx, my, librarypos, Game.HEIGHT-boxy, boxwidth, boxheight)) {
 
-			game.gameState = STATE.Library;
+			game.gameState = STATE.LIBRARY;
 		}
 
 		//Parking lot Button
 		if(mouseOver(mx, my, parkingpos, Game.HEIGHT-boxy, boxwidth, boxheight)) {
 
-			game.gameState = STATE.ParkingLot;
+			game.gameState = STATE.PARKINGLOT;
 		}
-		if(mouseOver(mx,my, 1865, 0, 55, 55)&&game.gameState == STATE.Canteen) {
+		if(mouseOver(mx,my, 1865, 0, 55, 55)&&game.gameState == STATE.CANTEEN) {
 			
 			cPop = true;
 			//game.gameState = STATE.Office;
@@ -76,8 +69,8 @@ public class HUD extends MouseAdapter{
 			//game.gameState = STATE.MultisalenPOP;
 
 		}
-		if(mouseOver(mx, my, (game.WIDTH/2)-230, (game.HEIGHT/2)+150, 75, 100) && cPop == true) {
-			if(tableObjectAdded == false) {
+		if(mouseOver(mx, my, (Game.WIDTH/2)-230, (Game.HEIGHT/2)+150, 75, 100) && cPop) {
+			if(!tableObjectAdded) {
 				handler.addObject(table);
 				tableObjectAdded = true;
 			}
@@ -91,9 +84,7 @@ public class HUD extends MouseAdapter{
 
 			}
 		}
-
-		if(game.gameState == STATE.Canteen) {
-			if(mouseOver(mx,my, (Game.WIDTH/2)+210, (Game.HEIGHT/2)-250, 40, 40)){
+			if(game.gameState == STATE.CANTEEN && mouseOver(mx,my, (Game.WIDTH/2)+210, (Game.HEIGHT/2)-250, 40, 40)){
 				mPop = false;
 				if(tableObjectAdded) {
 				handler.removeObject(table);
@@ -102,17 +93,14 @@ public class HUD extends MouseAdapter{
 				cPop = false;
 				mPopClose = true;
 			}
-		}
-
-
-
 	}
-
+	@Override
 	public void mouseReleased(MouseEvent e) {
-
+		// Do nothing because we don't have any mouseReleased events.
 	}
 
 	public void tick() {
+		//Is empty because we don't have anything that needs to tick in this class.
 	}	
 	private boolean mouseOver(int mx, int my, int x, int y, int width, int height) {
 
@@ -125,75 +113,72 @@ public class HUD extends MouseAdapter{
 
 
 
-	public void render(Graphics g) throws IOException {
+	public void render(Graphics g){
 
 
-		if(game.gameState == STATE.Office) {
+		if(game.gameState == STATE.OFFICE) {
 			cPop=false;
-			g.drawImage(ImageLoader.getImg(5), (game.WIDTH/2)-ImageLoader.getImg(5).getWidth()/2, 55, null);
+			g.drawImage(ImageLoader.getImg(5), (Game.WIDTH/2)-ImageLoader.getImg(5).getWidth()/2, 55, null);
 
 		}
 
 
 
-		if(game.gameState == STATE.Multisalen) {
+		if(game.gameState == STATE.MULTISALEN) {
 			cPop=false;
-			g.drawImage(ImageLoader.getImg(1), (game.WIDTH/2)-ImageLoader.getImg(1).getWidth()/2, 55, null);
+			g.drawImage(ImageLoader.getImg(1), (Game.WIDTH/2)-ImageLoader.getImg(1).getWidth()/2, 55, null);
 
-			if(mPop == true) {
+			if(mPop) {
 				mPopClose = false;
 				g.setColor(Color.blue);
-				g.fillRect((game.WIDTH/2)-250, (game.HEIGHT/2)-250, 500, 500);
+				g.fillRect((Game.WIDTH/2)-250, (Game.HEIGHT/2)-250, 500, 500);
 				g.setColor(Color.red);
-				g.drawRect((game.WIDTH/2)+210, (game.HEIGHT/2)-250, 40, 40);
+				g.drawRect((Game.WIDTH/2)+210, (Game.HEIGHT/2)-250, 40, 40);
 				g.setColor(Color.yellow);
 
 
-				g.drawImage(ImageLoader.getImg(8), (game.WIDTH/2)-230, (game.HEIGHT/2)+150, null);
+				g.drawImage(ImageLoader.getImg(8), (Game.WIDTH/2)-230, (Game.HEIGHT/2)+150, null);
 
 			}
 		}
 
 
 
-		if(game.gameState == STATE.Canteen) {
-			g.drawImage(ImageLoader.getImg(2), (game.WIDTH/2)-ImageLoader.getImg(2).getWidth()/2, 55, null);
+		if(game.gameState == STATE.CANTEEN) {
+			g.drawImage(ImageLoader.getImg(2), (Game.WIDTH/2)-ImageLoader.getImg(2).getWidth()/2, 55, null);
 
-			if(cPop == true) {
+			if(cPop) {
 				g.setColor(Color.blue);
-				g.fillRect((game.WIDTH/2)-250, (game.HEIGHT/2)-250, 500, 500);
+				g.fillRect((Game.WIDTH/2)-250, (Game.HEIGHT/2)-250, 500, 500);
 				g.setColor(Color.red);
-				g.drawRect((game.WIDTH/2)+210, (game.HEIGHT/2)-250, 40, 40);
+				g.drawRect((Game.WIDTH/2)+210, (Game.HEIGHT/2)-250, 40, 40);
 				g.setColor(Color.yellow);
 				
-				if(broke == true) {
+				if(broke) {
 					g.setColor(Color.red);
-					g.fillRect(game.WIDTH/2-100, game.HEIGHT/2-100, 200, 200);
+					g.fillRect(Game.WIDTH/2-100, Game.HEIGHT/2-100, 200, 200);
 					g.setColor(Color.black);
-					g.drawString("You can't afford n/ another table", game.WIDTH/2, game.HEIGHT/2);
+					g.drawString("You can't afford n/ another table", Game.WIDTH/2, Game.HEIGHT/2);
 				}
 
 
-				g.drawImage(ImageLoader.getImg(8), (game.WIDTH/2)-230, (game.HEIGHT/2)+150, null);
+				g.drawImage(ImageLoader.getImg(8), (Game.WIDTH/2)-230, (Game.HEIGHT/2)+150, null);
 				
 			}
-			/*	if(canteen pop up == true) {
-				draw canteen popup
-
-
-			}
-
+			/*Soon to be implemented if(canteen pop up == true) {
+				Soon to be implemented draw canteen popup
+				Soon }
 			 */
 
 		}
-		if(game.gameState == STATE.Library) {
+		if(game.gameState == STATE.LIBRARY) {
 			cPop=false;
 
-			g.drawImage(ImageLoader.getImg(3), (game.WIDTH/2)-ImageLoader.getImg(3).getWidth()/2, 55, null);
+			g.drawImage(ImageLoader.getImg(3), (Game.WIDTH/2)-ImageLoader.getImg(3).getWidth()/2, 55, null);
 		}
-		if(game.gameState == STATE.ParkingLot) {
+		if(game.gameState == STATE.PARKINGLOT) {
 
-			g.drawImage(ImageLoader.getImg(4), (game.WIDTH/2)-ImageLoader.getImg(4).getWidth()/2, 55, null);
+			g.drawImage(ImageLoader.getImg(4), (Game.WIDTH/2)-ImageLoader.getImg(4).getWidth()/2, 55, null);
 		}
 
 

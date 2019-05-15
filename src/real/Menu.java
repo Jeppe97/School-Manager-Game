@@ -38,19 +38,19 @@ public class Menu extends MouseAdapter{
 		int mx = e.getX();
 
 
-		if(game.gameState == STATE.Menu) {
+		if(game.gameState == STATE.MENU) {
 			//Play Button
 			if(mouseOver(mx, my, (Game.WIDTH/2 - 100), (Game.HEIGHT/2 - 140), 200, 64)) {
 				handler.addObject(new TopRow(200,200, ID.TopRow));
 				handler.addObject(new Money(200,200,ID.Money));
 				handler.addObject(new Students(200,200,ID.Students));
 				handler.addObject(new Mood(200,200,ID.Mood));
-				game.gameState = STATE.Office;
+				game.gameState = STATE.OFFICE;
 			}
 
 			//Help Button
 			if(mouseOver(mx,my,(Game.WIDTH/2 - 100), (Game.HEIGHT/2 - 50), 200, 64)) {
-				game.gameState = STATE.Help;
+				game.gameState = STATE.HELP;
 			}
 
 
@@ -62,9 +62,9 @@ public class Menu extends MouseAdapter{
 
 		}
 		//Back Button For Help
-		if(game.gameState == STATE.Help) {
+		if(game.gameState == STATE.HELP) {
 			if(mouseOver(mx,my,Game.WIDTH/2,(Game.HEIGHT/2)+200,200,64)) {
-				game.gameState = STATE.Menu;
+				game.gameState = STATE.MENU;
 				return;
 			}
 		}
@@ -90,7 +90,7 @@ public class Menu extends MouseAdapter{
 
 
 	public void render(Graphics g) throws IOException {
-		if(game.gameState == STATE.Menu) {	
+		if(game.gameState == STATE.MENU) {	
 
 			Font header = new Font("Courier",1,50);
 			Font buttonText = new Font("Courier",1,30);
@@ -120,7 +120,7 @@ public class Menu extends MouseAdapter{
 
 		}
 
-		else if(game.gameState == STATE.Help) {
+		else if(game.gameState == STATE.HELP) {
 
 			Font fnt = new Font("Monotype Corsiva",1,50);
 

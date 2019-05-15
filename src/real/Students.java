@@ -23,19 +23,21 @@ public class Students extends GameObject{
 		long elapsedTime = System.currentTimeMillis() - startTime;
 		if((elapsedTime/1000)>=2) {
 
-			if(mood>=75) {
+			if(GameObject.mood>=75) {
 				student+=1000;
 			}
-			else if(mood<75 && mood>=50) {
+			else if(GameObject.mood<75 && mood>=50) {
 				student+=500;
 			}
-			else if(mood<50) {
+			else if(GameObject.mood<50 && GameObject.mood>10) {
 				student-=50;
 			}
-			else if(mood<10) {
-				System.exit(1);
-			}
+			
 			startTime = System.currentTimeMillis();
+		}
+		else if(GameObject.mood<=1) {
+			//System.exit(0);
+			mood = 100;
 		}
 		studentString = Integer.toString(student);
 	}

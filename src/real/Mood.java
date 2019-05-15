@@ -8,7 +8,7 @@ public class Mood extends GameObject{
 	public Mood(int x, int y, ID id) {
 		super(x, y, id);
 		
-		mood = 75;
+		mood = 100;
 		greenValue = 255;
 	}
 
@@ -17,6 +17,7 @@ public class Mood extends GameObject{
 		greenValue = Game.clamp(greenValue, 0, 255);
 		
 		greenValue = mood*2;
+		mood--;
 	
 	}
 	public void render(Graphics g) {

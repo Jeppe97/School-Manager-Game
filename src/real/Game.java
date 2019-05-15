@@ -1,19 +1,14 @@
 package real;
 
 import java.awt.Canvas;
-
 import java.awt.Color;
 import java.awt.Dimension;
-import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.Toolkit;
 import java.awt.image.BufferStrategy;
-import java.awt.image.BufferedImage;
-import java.io.File;
 import java.io.IOException;
-
-import javax.imageio.ImageIO;
-import javax.swing.JFrame;
+import java.io.Serializable;
+import java.util.logging.Logger;
 
 public class Game extends Canvas implements Runnable{
 	
@@ -30,35 +25,27 @@ public class Game extends Canvas implements Runnable{
 	private Handler handler;
 	private Menu menu;
 	private HUD hud;
-	private MultiPOP pop1;
 	public Window win;
 	
-	
-
-	
 	private Graphics g;
-	
 	public enum STATE {
-		Menu,
-		Game,
-		Help,
-		Multisalen,
-		Office,
-		MultisalenPOP,
-		Canteen,
-		Library,
-		ParkingLot
-	};
+		MENU,
+		GAME,
+		HELP,
+		MULTISALEN,
+		OFFICE,
+		MULTISALENPOP,
+		CANTEEN,
+		LIBRARY,
+		PARKINGLOT
+	}
 	
-	public STATE gameState = STATE.Menu;
+	public STATE gameState = STATE.MENU;
 	
 	int standardWidth = 800;
 	int standardHeight = 600;
-	int screenWidth, screenHeight; // Get these from your graphics device or the window you're drawing to.
-
-	 // Draws a 100x100 rectangle in the bottom right corner.
-
-	// Due to the scaling, if you are running on eg 1024x768, this becomes a 128x128 rectangle.
+	int screenWidth;
+	int screenHeight; 
 
 	public Game(){
 		handler = new Handler();
@@ -66,7 +53,6 @@ public class Game extends Canvas implements Runnable{
 		this.addMouseListener(menu);
 		hud = new HUD(this,handler);
 		this.addMouseListener(hud);
-		//hud.initImg();
 		
 		ImageLoader.load();
 		
@@ -106,7 +92,6 @@ public class Game extends Canvas implements Runnable{
 				try {
 					render();
 				} catch (IOException e) {
-					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
 			frames++;
@@ -121,10 +106,10 @@ public class Game extends Canvas implements Runnable{
 	}
 	private void tick() {
 			handler.tick();
-			if(gameState == STATE.Game || gameState == STATE.Canteen || gameState == STATE.Library || gameState == STATE.ParkingLot || gameState == STATE.Multisalen || gameState == STATE.MultisalenPOP){
+			if(gameState == STATE.GAME || gameState == STATE.CANTEEN || gameState == STATE.LIBRARY || gameState == STATE.PARKINGLOT || gameState == STATE.MULTISALEN || gameState == STATE.MULTISALENPOP){
 				hud.tick();
 				
-			}else if(gameState == STATE.Menu) {
+			}else if(gameState == STATE.MENU) {
 				menu.tick();
 			}	
 	}
@@ -141,11 +126,11 @@ public class Game extends Canvas implements Runnable{
 		
 		handler.render(g);
 		
-		if(gameState == STATE.Game || gameState == STATE.Canteen || gameState == STATE.Library || gameState == STATE.ParkingLot || gameState == STATE.Multisalen || gameState == STATE.MultisalenPOP || gameState == STATE.Office){
+		if(gameState == STATE.GAME || gameState == STATE.CANTEEN || gameState == STATE.LIBRARY || gameState == STATE.PARKINGLOT || gameState == STATE.MULTISALEN || gameState == STATE.MULTISALENPOP || gameState == STATE.OFFICE){
 			hud.render(g);
 		
 			
-		}else if(gameState == STATE.Menu || gameState == STATE.Help) {
+		}else if(gameState == STATE.MENU || gameState == STATE.HELP) {
 			menu.render(g);
 		}
 		
@@ -155,10 +140,12 @@ public class Game extends Canvas implements Runnable{
 	}
 	public static int clamp(int var, int min, int max) {
 		if(var>=max) {
-			return var = max;
+			var = max;
+			return var;
 		}
 		else if (var<=min) {
-			return var = min;
+			var = min;
+			return var;
 		}
 		else
 			return var;

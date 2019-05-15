@@ -21,6 +21,9 @@ public class ImageLoader {
 	public static BufferedImage desk;
 	public static BufferedImage imgplaceholder;
 	
+	private ImageLoader(){
+		throw new IllegalStateException("Utility Class");
+	}
 	
 	public static void load() {
 		
@@ -37,7 +40,6 @@ public class ImageLoader {
 		
 		
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		

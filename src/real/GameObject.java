@@ -24,8 +24,4 @@ public GameObject(int x, int y,ID id) {
 }
 	public abstract void tick();
 	public abstract void render(Graphics g) throws IOException;
-	
-	
-	
-
 }

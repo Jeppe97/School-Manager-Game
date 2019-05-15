@@ -1,14 +1,13 @@
 package real;
 
 import java.awt.Canvas;
+
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.Toolkit;
 import java.awt.image.BufferStrategy;
 import java.io.IOException;
-import java.io.Serializable;
-import java.util.logging.Logger;
 
 public class Game extends Canvas implements Runnable{
 	

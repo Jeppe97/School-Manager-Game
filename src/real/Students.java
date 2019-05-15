@@ -16,7 +16,7 @@ public class Students extends GameObject{
 	}
 	public void studentsDropOut()
 	{
-		
+		//Is empty because it's in development
 	}
 	
 	public void tick() {
@@ -42,22 +42,26 @@ public class Students extends GameObject{
 		studentString = Integer.toString(student);
 	}
 	public void render(Graphics g) {
+		
+		String STUDENTS = "Students: ";
+		String ARIAL = "Arial";
+		
 		if (student<100) {
 		g.setColor(Color.RED);
-		g.setFont(new Font("Arial",Font.BOLD,20));
-		g.drawString("Students: " + student, posx, posy);
+		g.setFont(new Font(ARIAL,Font.BOLD,20));
+		g.drawString(STUDENTS + student, posx, posy);
 		}
 		if (student<500 && student>=100)
 		{
 		g.setColor(Color.YELLOW);
-		g.setFont(new Font("Arial",Font.BOLD,20));
-		g.drawString("Students: " + student, posx, posy);	
+		g.setFont(new Font(ARIAL,Font.BOLD,20));
+		g.drawString(STUDENTS + student, posx, posy);	
 		}
 		if (student>=500)
 		{
 		g.setColor(Color.green);
-		g.setFont(new Font("Arial",Font.BOLD,20));
-		g.drawString("Students: " + student, posx, posy);	
+		g.setFont(new Font(ARIAL,Font.BOLD,20));
+		g.drawString(STUDENTS + student, posx, posy);	
 		}
 		
 		

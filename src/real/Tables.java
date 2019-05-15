@@ -12,6 +12,7 @@ public class Tables extends GameObject{
 		tables=500;
 	}
 	public void tick() {
+		//Is empty because we don't need a tick in this class.
 	}
 
 	

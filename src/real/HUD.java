@@ -4,7 +4,6 @@ import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
-import java.io.IOException;
 
 import real.Game.STATE;
 
@@ -32,7 +31,7 @@ public class HUD extends MouseAdapter{
 	public boolean mPopClose = false;
 
 	public HUD(Game game, Handler handler) {
-		table = new Tables(200,200,ID.Tables);
+		table = new Tables(200,200,ID.TABLES);
 		this.game = game;
 		this.handler = handler;
 	}

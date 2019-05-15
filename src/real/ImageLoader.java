@@ -9,17 +9,17 @@ import javax.imageio.ImageIO;
 public class ImageLoader {
 
 	
-	public static BufferedImage multisalen;
-	public static BufferedImage canteen;
-	public static BufferedImage library;
-	public static BufferedImage parkinglot;
-	public static BufferedImage office;
-	public static BufferedImage toprow;
-	public static BufferedImage bottomrow;
-	public static BufferedImage row;
-	public static BufferedImage button;
-	public static BufferedImage desk;
-	public static BufferedImage imgplaceholder;
+	private static BufferedImage multisalen;
+	private static BufferedImage canteen;
+	private static BufferedImage library;
+	private static BufferedImage parkinglot;
+	private static BufferedImage office;
+	//Not used yet private static BufferedImage toprow;
+	//Not used yet private static BufferedImage bottomrow;
+	private static BufferedImage row;
+	private static BufferedImage button;
+	private static BufferedImage desk;
+	// Not used yet private static BufferedImage imgplaceholder;
 	
 	private ImageLoader(){
 		throw new IllegalStateException("Utility Class");

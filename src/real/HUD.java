@@ -24,11 +24,9 @@ public class HUD extends MouseAdapter{
 	int parkingpos = multipos+600;
 	boolean tableObjectAdded = false;
 
-	public boolean mPop = false;
-	public boolean cPop = false;
-	public boolean broke = false;
-
-	public boolean mPopClose = false;
+	private boolean mPop = false;
+	private boolean cPop = false;
+	private boolean broke = false;
 
 	public HUD(Game game, Handler handler) {
 		table = new Tables(200,200,ID.TABLES);
@@ -90,7 +88,7 @@ public class HUD extends MouseAdapter{
 				tableObjectAdded = false;
 				}
 				cPop = false;
-				mPopClose = true;
+				
 			}
 	}
 	@Override
@@ -128,7 +126,6 @@ public class HUD extends MouseAdapter{
 			g.drawImage(ImageLoader.getImg(1), (Game.WIDTH/2)-ImageLoader.getImg(1).getWidth()/2, 55, null);
 
 			if(mPop) {
-				mPopClose = false;
 				g.setColor(Color.blue);
 				g.fillRect((Game.WIDTH/2)-250, (Game.HEIGHT/2)-250, 500, 500);
 				g.setColor(Color.red);

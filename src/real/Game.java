@@ -24,7 +24,7 @@ public class Game extends Canvas implements Runnable{
 	private Handler handler;
 	private Menu menu;
 	private HUD hud;
-	public Window win;
+	
 	
 	private Graphics g;
 	public enum STATE {
@@ -39,7 +39,7 @@ public class Game extends Canvas implements Runnable{
 		PARKINGLOT
 	}
 	
-	public STATE gameState = STATE.MENU;
+	protected STATE gameState = STATE.MENU;
 	
 	int standardWidth = 800;
 	int standardHeight = 600;

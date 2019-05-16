@@ -19,6 +19,7 @@ public abstract class GameObject {
 	protected static int mood;
 	protected int greenValue;
 	protected static int tables;
+	protected static String tableString;
 
 
 public GameObject(int x, int y,ID id) {

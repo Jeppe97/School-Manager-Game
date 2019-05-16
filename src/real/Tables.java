@@ -1,6 +1,5 @@
 package real;
 
-import java.awt.Color;
 import java.awt.Graphics;
 import java.io.IOException;
 
@@ -13,12 +12,12 @@ public class Tables extends GameObject{
 	}
 	public void tick() {
 		//Is empty because we don't need a tick in this class.
+		tableString = Integer.toString(tables);
 	}
 
 	
 	public void render(Graphics g) throws IOException {
-		g.setColor(Color.green);
-		g.drawRect(10, 10, 100, 100);
+		
 	}
 
 }

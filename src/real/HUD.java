@@ -67,16 +67,12 @@ public class HUD extends MouseAdapter{
 
 		}
 		if(mouseOver(mx, my, (Game.WIDTH/2)-230, (Game.HEIGHT/2)+150, 75, 100) && cPop) {
-			if(!tableObjectAdded) {
-				handler.addObject(table);
-				tableObjectAdded = true;
-			}
-			GameObject.tables++;
 			if(GameObject.money<=1000) {
 				broke = true;
 			}
 			else {
 				broke = false;
+				GameObject.tables++;
 				GameObject.money-=1000;
 
 			}
@@ -88,6 +84,7 @@ public class HUD extends MouseAdapter{
 				tableObjectAdded = false;
 				}
 				cPop = false;
+				broke = false;
 				
 			}
 	}
@@ -144,7 +141,7 @@ public class HUD extends MouseAdapter{
 			g.drawImage(ImageLoader.getImg(2), (Game.WIDTH/2)-ImageLoader.getImg(2).getWidth()/2, 55, null);
 
 			if(cPop) {
-				g.setColor(Color.blue);
+				g.setColor(Color.gray);
 				g.fillRect((Game.WIDTH/2)-250, (Game.HEIGHT/2)-250, 500, 500);
 				g.setColor(Color.red);
 				g.drawRect((Game.WIDTH/2)+210, (Game.HEIGHT/2)-250, 40, 40);
@@ -154,11 +151,18 @@ public class HUD extends MouseAdapter{
 					g.setColor(Color.red);
 					g.fillRect(Game.WIDTH/2-100, Game.HEIGHT/2-100, 200, 200);
 					g.setColor(Color.black);
-					g.drawString("You can't afford n/ another table", Game.WIDTH/2, Game.HEIGHT/2);
+					g.drawString("You can't afford another table!", Game.WIDTH/2-110, Game.HEIGHT/2);
 				}
-
-
+				if(!tableObjectAdded) {
+					handler.addObject(table);
+					tableObjectAdded = true;
+				}
 				g.drawImage(ImageLoader.getImg(8), (Game.WIDTH/2)-230, (Game.HEIGHT/2)+150, null);
+				
+				g.setColor(Color.black);
+				g.setFont(new Font("Arial",Font.BOLD,20));
+				g.drawString("You now have: "+GameObject.tableString+ " tables", 720,350);
+				g.drawString("Price of a table is: 1000", 720, 320);
 				
 			}
 			/*Soon to be implemented if(canteen pop up == true) {

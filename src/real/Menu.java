@@ -1,13 +1,12 @@
 package real;
 
+
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.image.BufferedImage;
-import java.io.IOException;
-import real.Game.STATE;
 
 public class Menu extends MouseAdapter{
 
@@ -27,19 +26,19 @@ public class Menu extends MouseAdapter{
 		int mx = e.getX();
 
 
-		if(game.gameState == STATE.MENU) {
+		if(game.gameState == real.Game.STATE.MENU) {
 			//Play Button
 			if(mouseOver(mx, my, (Game.WIDTH/2 - 100), (Game.HEIGHT/2 - 140), 200, 64)) {
 				handler.addObject(new TopRow(200,200, ID.TOPROW));
 				handler.addObject(new Money(200,200,ID.MONEY));
 				handler.addObject(new Students(200,200,ID.STUDENTS));
 				handler.addObject(new Mood(200,200,ID.MOOD));
-				game.gameState = STATE.OFFICE;
+				game.gameState = real.Game.STATE.OFFICE;
 			}
 
 			//Help Button
 			if(mouseOver(mx,my,(Game.WIDTH/2 - 100), (Game.HEIGHT/2 - 50), 200, 64)) {
-				game.gameState = STATE.HELP;
+				game.gameState = real.Game.STATE.HELP;
 			}
 
 
@@ -51,8 +50,8 @@ public class Menu extends MouseAdapter{
 
 		}
 		//Back Button For Help
-			if(game.gameState == STATE.HELP && mouseOver(mx,my,Game.WIDTH/2,(Game.HEIGHT/2)+200,200,64)) {
-				game.gameState = STATE.MENU;
+			if(game.gameState == real.Game.STATE.HELP && mouseOver(mx,my,Game.WIDTH/2,(Game.HEIGHT/2)+200,200,64)) {
+				game.gameState = real.Game.STATE.MENU;
 		}
 	}
 
@@ -76,7 +75,7 @@ public class Menu extends MouseAdapter{
 
 
 	public void render(Graphics g) {
-		if(game.gameState == STATE.MENU) {	
+		if(game.gameState == real.Game.STATE.MENU) {	
 			Font header = new Font("Courier",1,50);
 			Font buttonText = new Font("Courier",1,30);
 
@@ -103,7 +102,7 @@ public class Menu extends MouseAdapter{
 			g.drawString(quit, (Game.WIDTH/2 - (widthQuit/2)), (Game.HEIGHT/2 + 80));
 		}
 
-		else if(game.gameState == STATE.HELP) {
+		else if(game.gameState == real.Game.STATE.HELP) {
 
 			Font fnt = new Font("Monotype Corsiva",1,50);
 

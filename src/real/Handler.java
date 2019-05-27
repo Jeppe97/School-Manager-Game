@@ -6,6 +6,10 @@ import java.util.LinkedList;
 
 public class Handler {
 
+	
+	//The handler class is the class which handles all the GameObjects by keeping them in a list and loops through all the GameObjects, rendering and ticking them.
+	//It also has the possibility to add and remove GameObjects to the list if we want which makes it a very modular game, easy to add new features and easy to remove them as well.
+	
 	LinkedList<GameObject> object = new LinkedList<>();
 	
 	public void tick() {

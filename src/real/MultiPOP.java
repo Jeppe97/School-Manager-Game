@@ -2,6 +2,7 @@ package real;
 
 import java.awt.Color;
 import java.awt.Graphics;
+import java.awt.Rectangle;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
@@ -37,6 +38,12 @@ public class MultiPOP extends GameObject {
 		g.drawImage(img, (Game.WIDTH/2)-230, (Game.HEIGHT/2)+150, null);
 		
 		
+	}
+
+	@Override
+	public Rectangle getBounds() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }

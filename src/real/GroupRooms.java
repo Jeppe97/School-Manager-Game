@@ -4,23 +4,22 @@ import java.awt.Graphics;
 import java.awt.Rectangle;
 import java.io.IOException;
 
-public class TopRow extends GameObject {
+public class GroupRooms extends GameObject{
 
-	public TopRow(int x, int y,ID id){
+	public GroupRooms(int x, int y, ID id) {
 		super(x, y, id);
+
+		groupRooms = 32;
 		
 	}
 
 	public void tick() {
-		//Is empty because we don't need a tick in this class.
+		groupRoomString = Integer.toString(groupRooms);
+		
 	}
 
 	public void render(Graphics g) throws IOException {
-
-		g.drawImage(ImageLoader.getImg("row"), 0, -20, null);
-		
-		g.drawImage(ImageLoader.getImg("desk"), 1865, 0, null);
-		g.drawRect(1865, 0, 55, 55);
+		// TODO Auto-generated method stub
 		
 	}
 
@@ -29,6 +28,5 @@ public class TopRow extends GameObject {
 		// TODO Auto-generated method stub
 		return null;
 	}
-	
-	
+
 }

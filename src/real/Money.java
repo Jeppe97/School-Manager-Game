@@ -3,28 +3,23 @@ package real;
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.Graphics;
+import java.awt.Rectangle;
 
 public class Money extends GameObject{
 	
 	
 	long startTime = System.currentTimeMillis();
-	long startTime2 = System.currentTimeMillis();
 	
 	public Money(int x, int y, ID id) {
 		super(x, y, id);
 		
-		money= 10;
+		money= 20000;
 	}
 	public void tick() {
 		long elapsedTime = System.currentTimeMillis() - startTime;
-		long elapsedTime2 = System.currentTimeMillis() - startTime2;
-		if((elapsedTime/1000)>=5) {
-			money+=student;
+		if((elapsedTime/1000)>=10) {
+			money+=(student/0.25);
 			startTime = System.currentTimeMillis();
-		}
-		if(elapsedTime2/1000>=5.3) {
-			buy(100);
-			startTime2 = System.currentTimeMillis();
 		}
 		moneyString = Integer.toString(money);
 	}
@@ -39,6 +34,11 @@ public class Money extends GameObject{
 			money-=price;
 		}
 		return message;
+	}
+	@Override
+	public Rectangle getBounds() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }

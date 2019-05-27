@@ -1,6 +1,8 @@
 package real;
 
+
 import java.awt.Graphics;
+import java.awt.Rectangle;
 
 public class Office extends GameObject {
 
@@ -16,6 +18,13 @@ public class Office extends GameObject {
 	
 	public void render(Graphics g) {
 		g.fillRect(x, y, 32, 32);
+	}
+
+
+	@Override
+	public Rectangle getBounds() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }

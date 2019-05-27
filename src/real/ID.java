@@ -7,5 +7,10 @@ public enum ID {
 	TOPROW(),
 	MONEY(),
 	MOOD(),
+	PARKINGS(),
+	GROUPROOM(),
+	PLAYER(),
+	ENEMY(),
+	PROJECTILE(),
 	TABLES();
 }
